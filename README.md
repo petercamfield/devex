@@ -80,9 +80,9 @@ service_bus.tftest.hcl... pass
 I've added three example `.tfvars` files to the repository to make running straightforward. 
 To run
 ```zsh
-terraform plan -var-file {env}.tfvars -out {env}.out` 
-terraform apply {env}.out
-terraform destroy
+terraform plan -var-file={env}.tfvars -out={env}.out 
+terraform apply "{env}.out"
+terraform destroy -var-file={env}.tfvars
 ```
 where `{env}` is one of `test`, `staging` or `production`.
 
