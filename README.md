@@ -72,25 +72,26 @@ service_bus.tftest.hcl... in progress
   run "Ensure queues are created with correct name"... pass
 service_bus.tftest.hcl... tearing down
 service_bus.tftest.hcl... pass
-
 ```
 
 ## Plan / Apply / Destroy
 I've added three example `.tfvars` files to the repository to make running straightforward. 
+
 To run
 ```zsh
 terraform plan -var-file={env}.tfvars -out={env}.out 
 terraform apply "{env}.out"
 terraform destroy -var-file={env}.tfvars
 ```
-where `{env}` is one of `test`, `staging` or `production`.
 
+where `{env}` is one of `test`, `staging` or `production`.
+ 
 I've included my copy of `test.out` - to view the plan run `terraform show "test.out"`
 
 ## Where next
 What I haven't done
 * Configured the namespace and queues in any meaningful way.
 * Used premium features such as high throughput, scaling, network security, Geo-disaster and recovery etc 
-* Incorporated a CI / CD pipeline to automate linting, static analysis (tfsec, checkov, etc.), deployment (automatic / gated) etc. 
+* Incorporated a CI / CD pipeline to automate linting, static analysis (tfsec, checkov, etc.), deployment (automatic / gated), etc. 
 * Created a module - If the structure were to be repeated anywhere
-* Security hardening / least privilege - Ensure resources are only as visible as they need be (depending on resource and requirements), e.g. no internet ingress , vnet / subnet restrictions, private endpoints etc.  Ideally specify particular access rights to resources for each environment - e.g. engineers may have full access to test, and limited access to production. 
+* Security hardening / least privilege - Ensure resources are only as visible as they need be depending on resource and requirements, e.g. no internet ingress, vnet / subnet restrictions, private endpoints etc. Ideally specify particular access rights to resources for each environment - e.g. engineers may have full access to test, and limited access to production. 
