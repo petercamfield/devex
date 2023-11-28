@@ -11,15 +11,18 @@ provider "azurerm" {
   features {}
 }
 
-locals {
-  location = "uksouth"
+resource "azurerm_resource_group" "sbns_rg" {
+  for_each = { for namespace in var.service_bus_namespaces : namespace.name => namespace }
+  name     = "cb-${var.environment_name}-${each.key}-sbns-rg"
+  location = var.location
 
-  queues_by_namespace = distinct(flatten([
-    for namespace in var.service_bus_namespaces : [
-      for queue in toset(namespace.queues) : {
-        namespace = namespace.name
-        name      = queue
-      }
-    ]
-  ]))
+  tags = {
+    cost_centre      = each.value.cost_centre
+    product_name     = each.value.product_name
+    environment_name = var.environment_name
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }

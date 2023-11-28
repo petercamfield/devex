@@ -1,3 +1,9 @@
+variable "location" {
+  description = "Azure location, defaults to uksouth"
+  type        = string
+  default     = "uksouth"
+}
+
 variable "environment_name" {
   description = "Name of the environment e.g. test, staging, production"
   type        = string
