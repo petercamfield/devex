@@ -2,11 +2,13 @@ variable "location" {
   description = "Azure location, defaults to uksouth"
   type        = string
   default     = "uksouth"
+  nullable    = false
 }
 
 variable "environment_name" {
   description = "Name of the environment e.g. test, staging, production"
   type        = string
+  nullable    = false
 }
 
 variable "service_bus_namespaces" {
@@ -17,4 +19,5 @@ variable "service_bus_namespaces" {
     product_name = string
     queues       = list(string)
   }))
+  nullable = false
 }
