@@ -53,12 +53,12 @@ All of the above resources can be deployed via terraform via the AzureRM and AzA
 I'd use a fairly standard pipeline
 
 ### On Pull Request
-lint
-static analysis
-run tests
-plan, storing `out` file
-add comment to PR showing output of plan
+* lint
+* run static analysis
+* run tests
+* `terraform plan`, storing `out` file
+* add comment to PR showing output of plan
 
 ### On Merge to main
-optional - manual gate to show changes in `out` file and get approval
-apply `out` file
+* optional - manual gate to show changes in `out` file and get approval
+* apply `out` file
