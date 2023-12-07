@@ -1,7 +1,7 @@
 # Clear.Bank Theoretical Task - Design an observability platform
 
 For this task I've made the the following decisions / assumptions
-* The platform is hosted in Azure using AKS and Monitor
+* The platform is hosted in Azure using AKS and Azure Monitor.
 * Environments are separate.
 * All resources exist in the same region and tenant.
 * Open telemetry / structured logging / distributed tracing (where possible).
@@ -62,3 +62,6 @@ I'd use a fairly standard pipeline
 ### On Merge to main
 * optional - manual gate to show changes in `out` file and get approval
 * apply `out` file
+
+
+Additionally tools like Argo CD and Flux can be installed on the cluster and used to ensure synchronisation between the state described in git and the state of the cluster.
